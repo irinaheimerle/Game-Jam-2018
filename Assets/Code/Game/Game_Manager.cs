@@ -72,7 +72,7 @@ public class Game_Manager : MonoBehaviour
 
         _currentState = State.Play;
 
-        time.timeScale = 1f;
+        Time.timeScale = 1f;
 
         Debug.Log("I'm actually unpaused!");
     }
@@ -88,7 +88,7 @@ public class Game_Manager : MonoBehaviour
 
         Debug.Log("I'm actually working!");
 
-        time.timeScale = 0f;
+        Time.timeScale = 0f;
     }
 
     public static void EndGame()
