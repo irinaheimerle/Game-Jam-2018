@@ -39,6 +39,7 @@ public class Camera_Manager : MonoBehaviour
 	/*--------------------------------------------------------------------------------METHODS-----------------------*/
 	public static IEnumerator ShakeCamera(float duration, float magnitude)
 	{
+        yield break;
 		float currDuration = 0f;
 
 		while(currDuration < duration && Game_Manager.CurrentState == Game_Manager.State.Play)

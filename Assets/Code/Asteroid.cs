@@ -21,7 +21,7 @@ public class Asteroid : MonoBehaviour {
         float x = asteroid.transform.position.x;
         float y = asteroid.transform.position.y;
         float z = asteroid.transform.position.z;
-        asteroid.transform.position = new Vector3(x, y-0.6f, z);
+        asteroid.transform.position = new Vector3(x, y-0.2f, z);
 	}
 
     private void OnMouseDown()
