@@ -3,72 +3,85 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Manages the Score and multipliers.
+/// </summary>
 public class Score_Manager : MonoBehaviour
 {
+	private static Score_Manager _instance;
 
-	public Multiplier testMultiplier;
-	public Transform multiplierContainer;
+	[Tooltip("The time in seconds that is allowed between multiply interactions before the multiplier disappears.")]
+	public float multiplierCooldown = 5.0f;
 
 	private static int _currScore;
-	private static List<Multiplier> _multipliers;
+	private static float _multiplier;
 
-	// Use this for initialization
-	void Start()
+	private static float _currMultiplierCooldown;
+
+	private void Awake()
 	{
-		AddMultiplier(testMultiplier);
+		_instance = this;
+	}
+
+	private void Start()
+	{
+		_multiplier = 1.0f;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-
+		//count down on the cooldown if there is a multiplier to assign
+		if (_currMultiplierCooldown > 0.0f)
+			_currMultiplierCooldown -= Time.deltaTime;
+		else
+			_multiplier = 1.0f;
 	}
 
 
 	//TODO: Remove Test case later.
 	private void OnGUI()
 	{
+		if (!Debug_Manager.ShowDebugTools) return;
+
 		GUILayout.BeginArea(new Rect(150, 0, 100, 100));
+		if (GUILayout.Button("Test Score Add"))
+			AddToScore(1.0f);
 		if (GUILayout.Button("Test Multiplier"))
-			AddMultiplier(testMultiplier);
+			AddMultiplier(2.0f);
+		GUILayout.EndArea();
+		GUILayout.BeginArea(new Rect(250, 0, 100, 100));
+		GUILayout.Label("Score: " + _currScore);
 		GUILayout.EndArea();
 	}
 
 
 	/*--------------------------------------------------------------------------------METHODS-----------------------*/
-	public void AddMultiplier(Multiplier multiplier)
+	/// <summary>
+	/// Adds a given number to the score.
+	/// </summary>
+	/// <param name="score"></param>
+	public void AddToScore(float score)
 	{
-		Debug.Log("ADD MULT");
-		//create a copy
-		Multiplier mult = multiplier.CreateMultiplier(multiplierContainer);
-		//add multiplier
-		_multipliers.Add(mult);
-		//listen to multiplier
-		mult.OnFinish += OnMultiplierFinish;
-
-		Debug.Log("START MULT");
-
+		_currScore += (int)Math.Round(score * _multiplier);
+	}
+	/// <summary>
+	/// Adds a number to the multiplier used on the score.  Will reset the cooldown.
+	/// </summary>
+	/// <param name="multiplier"></param>
+	public void AddMultiplier(float multiplier)
+	{
+		_multiplier += multiplier;
+		//reset cooldown
+		_currMultiplierCooldown = multiplierCooldown;
 	}
 
 	/*--------------------------------------------------------------------------------ABSTRACTS---------------------*/
 	/*--------------------------------------------------------------------------------EVENTS------------------------*/
-	private void OnMultiplierFinish(Multiplier multiplier)
-	{
-		//remove the listener
-		multiplier.OnFinish -= OnMultiplierFinish;
-
-		//remove the multiplier
-		if (_multipliers.Contains(multiplier))
-			_multipliers.Remove(multiplier);
-
-		//destroy the object
-		Multiplier.DestroyImmediate(multiplier);
-
-		Debug.Log("END MULT");
-	}
 	/*--------------------------------------------------------------------------------OVERRIDES---------------------*/
 	/*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
-	public static int CurrentScore { get { return _currScore; } }
+	public static float CurrentScore { get { return _currScore; } }
 
 
 }

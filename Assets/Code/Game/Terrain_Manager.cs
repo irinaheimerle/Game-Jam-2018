@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages Terrain status.
+/// </summary>
 public class Terrain_Manager : MonoBehaviour {
 
 	public enum State 
@@ -30,6 +33,9 @@ public class Terrain_Manager : MonoBehaviour {
 
 	private void Start()
 	{
+		_terrainFull.SetActive(false);
+		_terrainMid.SetActive(false);
+		_terrainDead.SetActive(false);
 		ChangeState (State.Full);
 	}
 
@@ -37,6 +43,8 @@ public class Terrain_Manager : MonoBehaviour {
 	/*TODO: Remove test from end.*/
 	private void OnGUI()
 	{
+		if (!Debug_Manager.ShowDebugTools) return;
+
 		GUILayout.BeginArea (new Rect (0, 50, 250, 450));
 		if (GUILayout.Button ("Change To Full Terrain"))
 			ChangeState (State.Full);

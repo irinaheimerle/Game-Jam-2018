@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// Manages Game States and time played.
+/// </summary>
 public class Game_Manager : MonoBehaviour {
 	public delegate void Game_Event();
 	public static Game_Event OnStartGame, OnPauseGame, OnEndGame;
@@ -40,9 +44,11 @@ public class Game_Manager : MonoBehaviour {
 
 
 
-	/*-----TEST----------*/
+	//TODO: Remove on testing complete.
 	private void OnGUI()
 	{
+		if (!Debug_Manager.ShowDebugTools) return;
+
 		if (GUILayout.Button ("Start Game"))
 			StartGame ();
 		if (GUILayout.Button ("End Game"))
