@@ -20,7 +20,7 @@ public class Game_Manager : MonoBehaviour
 
     private static Game_Manager _instance;
     private static State _currentState;
-
+    private static string time;
     private static float _totalTime;
 
 
@@ -43,10 +43,15 @@ public class Game_Manager : MonoBehaviour
         if (_currentState == State.Play)
             _totalTime += Time.deltaTime;
 
-        //Debug.Log (_totalTime);
+        ///im testing this i will move it out later i hope
+        int minutes = Mathf.FloorToInt(_totalTime / 60F);
+        int seconds = Mathf.FloorToInt(_totalTime - minutes * 60);
+
+        string time = string.Format("{0:0}:{1:00}", minutes, seconds);
+
     }
 
-
+   
 
     //TODO: Remove on testing complete.
     private void OnGUI()
@@ -67,6 +72,8 @@ public class Game_Manager : MonoBehaviour
 
         _currentState = State.Play;
 
+        time.timeScale = 1f;
+
         Debug.Log("I'm actually unpaused!");
     }
 
@@ -75,9 +82,13 @@ public class Game_Manager : MonoBehaviour
         if (OnPauseGame != null)
             OnPauseGame();
 
+
+
         _currentState = State.Pause;
 
         Debug.Log("I'm actually working!");
+
+        time.timeScale = 0f;
     }
 
     public static void EndGame()
@@ -104,7 +115,7 @@ public class Game_Manager : MonoBehaviour
     /*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
     public static Game_Manager Instance { get { return _instance; } }
     public static State CurrentState { get { return _currentState; } }
-    public static float GetTime { get { return _totalTime; } }
+    public static string GetTime { get { return time; } }
 
    
 }
