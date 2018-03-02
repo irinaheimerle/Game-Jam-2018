@@ -62,6 +62,8 @@ public class Game_Manager : MonoBehaviour {
 			OnStartGame ();
 
 		_currentState = State.Play;
+
+        Debug.Log("I'm actually unpaused!");
 	}
 
 	public static void PauseGame()
@@ -70,6 +72,8 @@ public class Game_Manager : MonoBehaviour {
 			OnPauseGame ();
 
 		_currentState = State.Pause;
+
+        Debug.Log("I'm actually working!");
 	}
 
 	public static void EndGame()
