@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 68d2db310e09cc747923e558a54d4c2e
+timeCreated: 1519991175
+licenseType: Free
+=======
 guid: 8f03090815bab6d49a2bcbbf6d48a140
 timeCreated: 1519995382
+>>>>>>> Particles-On-Game_Manager-With-Asteroids
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0

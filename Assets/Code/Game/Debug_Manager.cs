@@ -14,7 +14,7 @@ public class Debug_Manager : MonoBehaviour
 			_showDebugTools = !_showDebugTools;
 		GUILayout.EndArea();
 
-		Debug.Log("TOOLS: " + _showDebugTools);
+		//Debug.Log("TOOLS: " + _showDebugTools);
 	}
 
 

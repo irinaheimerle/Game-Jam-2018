@@ -8,13 +8,12 @@ public class Asteroid : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         
-        float x = Random.Range(5.0f, 40.0f);
-        float y = Random.Range(40.0f, 50.0f);
+        float x = Random.Range(3.4f, 53.5f);
+        float y = Random.Range(250f, 251f);
+        float z = Random.Range(-215f, 275f);
 
-        Debug.Log("I am x" + x);
-        Debug.Log("I am Y" + y);
 
-        transform.position = new Vector3(x, y, 0);
+        transform.position = new Vector3(x, y, z);
     }
 
     // Update is called once per frame
@@ -22,6 +21,12 @@ public class Asteroid : MonoBehaviour {
         float x = asteroid.transform.position.x;
         float y = asteroid.transform.position.y;
         float z = asteroid.transform.position.z;
-        asteroid.transform.position = new Vector3(x, y-0.2f, 0);
+        asteroid.transform.position = new Vector3(x, y-0.2f, z);
 	}
+
+    private void OnMouseDown()
+    {
+        //GetComponent<Renderer>().enabled = false;
+        GameObject.DestroyImmediate(gameObject);
+    }
 }
