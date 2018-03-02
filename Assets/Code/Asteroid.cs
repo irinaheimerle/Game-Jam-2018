@@ -6,7 +6,7 @@ public class Asteroid : MonoBehaviour {
     public GameObject asteroid;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         
         float x = Random.Range(5.0f, 40.0f);
         float y = Random.Range(40.0f, 50.0f);
