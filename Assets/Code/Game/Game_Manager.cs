@@ -36,7 +36,7 @@ public class Game_Manager : MonoBehaviour {
 		if(_isRunning)
 			_totalTime += Time.deltaTime;
 
-		Debug.Log (_totalTime);
+		//Debug.Log (_totalTime);
 	}
 
 

@@ -22,7 +22,7 @@ public class Test : MonoBehaviour {
 	void Update () {
 		counter++;
 
-		Debug.Log (counter);
+		//Debug.Log (counter);
 
 		float x = cube.transform.position.x;
 		float y = cube.transform.position.y;
