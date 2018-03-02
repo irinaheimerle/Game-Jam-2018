@@ -72,7 +72,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   template: {fileID: 0}
   earth: {fileID: 0}
-  asteroidShakeMagnitude: 1
+  asteroidShakeMagnitude: 0.05
 --- !u!114 &114235269264892626
 MonoBehaviour:
   m_ObjectHideFlags: 1
