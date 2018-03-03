@@ -16,6 +16,7 @@ public class Score_Manager : MonoBehaviour
 
 	private static int _currScore;
 	private static float _multiplier;
+    private const int _CLICKED_POINTS = 500;
 
 	private static float _currMultiplierCooldown;
 
@@ -83,5 +84,7 @@ public class Score_Manager : MonoBehaviour
 	/*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
 	public static float CurrentScore { get { return _currScore; } }
 
+    public static void ClickPoints()
+    { _currScore += _CLICKED_POINTS; }
 
 }

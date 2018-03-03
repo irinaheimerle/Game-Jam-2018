@@ -5,6 +5,7 @@ using UnityEngine;
 public class Asteroid : MonoBehaviour {
     public GameObject asteroid;
     public Renderer asteroidBounds;
+   
 
 	// Use this for initialization
 	void Awake () {
@@ -41,5 +42,6 @@ public class Asteroid : MonoBehaviour {
         //Debug.Log("I am here");
         //GetComponent<Renderer>().enabled = false;
         AsteroidManager.DestroyAsteroid(this);
+        Score_Manager.ClickPoints();
     }
 }
