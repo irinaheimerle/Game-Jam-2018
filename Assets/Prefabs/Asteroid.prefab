@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114059126655515958}
   - component: {fileID: 114841225384793818}
   - component: {fileID: 114947765641713490}
+  - component: {fileID: 122695555598714170}
   m_Layer: 8
   m_Name: Asteroid
   m_TagString: Untagged
@@ -40,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1273092993353404}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8, y: 110.4, z: -214.8}
+  m_LocalPosition: {x: -35.404877, y: 0.44170856, z: 95.96798}
   m_LocalScale: {x: 785.28235, y: 785.2832, z: 785.2832}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,7 +61,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 754d8c2803de79e4a9e3b2bdd55ad9c6, type: 3}
+  - {fileID: 2100000, guid: ec751affa6455b64ebd2d5b187897e16, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,6 +141,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyAfterSeconds: 0
+--- !u!122 &122695555598714170
+Halo:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1273092993353404}
+  m_Enabled: 1
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_Size: 13
 --- !u!135 &135696569151388632
 SphereCollider:
   m_ObjectHideFlags: 1
