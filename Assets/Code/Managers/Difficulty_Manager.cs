@@ -35,8 +35,6 @@ public class Difficulty_Manager : MonoBehaviour
 		{
 			_currDifficulty++;
 
-			Debug.Log("UPDATE DIFFICULTY: " + _currDifficulty);
-
 			yield return new WaitForSeconds(intervalBetweenDifficultyChangeInSeconds);
 		}
 

@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asteroid: {fileID: 1273092993353404}
+  asteroidBounds: {fileID: 23838025447255328, guid: 5240b38553f01514594e86ae54fe98a4,
+    type: 2}
 --- !u!114 &114841225384793818
 MonoBehaviour:
   m_ObjectHideFlags: 1
