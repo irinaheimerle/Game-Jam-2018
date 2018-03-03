@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Asteroid_Destroyed : MonoBehaviour {
+public class Asteroid_Click_Destroyer : MonoBehaviour {
 
 	public ParticleSystem destroyPart;
 
+
+
 	private void OnMouseDown(){
+
+
 		ParticleSystem cloneDestroy = ParticleSystem.Instantiate (destroyPart);
 
 		GameObject.Destroy (destroyPart);

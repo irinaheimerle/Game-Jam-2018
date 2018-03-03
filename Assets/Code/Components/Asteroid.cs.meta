@@ -5,7 +5,8 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - asteroid: {fileID: 1713175172387874, guid: bfa77eb8579d7ab4f811d4ffbaf5589e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
