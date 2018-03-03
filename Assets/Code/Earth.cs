@@ -10,5 +10,11 @@ public class Earth : MonoBehaviour {
 		ParticleSystem cloneImpact = ParticleSystem.Instantiate(impactPart);
 		cloneImpact.transform.position = pos;
 
+		GameObject.Destroy (impactPart);
+
+		cloneImpact.GetComponent<ParticleDestroy> ().DestroyMe ();
+			
+		
+
 	}
 }
