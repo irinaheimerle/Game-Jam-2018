@@ -28,5 +28,6 @@ public class Asteroid : MonoBehaviour {
     {
         //GetComponent<Renderer>().enabled = false;
         GameObject.DestroyImmediate(gameObject);
+        Score_Manager.ClickPoints();
     }
 }

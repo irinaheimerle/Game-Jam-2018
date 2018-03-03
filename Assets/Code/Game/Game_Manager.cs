@@ -20,9 +20,10 @@ public class Game_Manager : MonoBehaviour
 
     private static Game_Manager _instance;
     private static State _currentState;
-    private static string time;
+    private static int time;
     private static float _totalTime;
 
+    
 
     private void Awake()
     {
@@ -33,7 +34,7 @@ public class Game_Manager : MonoBehaviour
     void Start()
     {
         StartGame();
-
+        
     }
 
     // Update is called once per frame
@@ -43,11 +44,7 @@ public class Game_Manager : MonoBehaviour
         if (_currentState == State.Play)
             _totalTime += Time.deltaTime;
 
-        ///im testing this i will move it out later i hope
-        int minutes = Mathf.FloorToInt(_totalTime / 60F);
-        int seconds = Mathf.FloorToInt(_totalTime - minutes * 60);
-
-        string time = string.Format("{0:0}:{1:00}", minutes, seconds);
+        
 
     }
 
@@ -77,6 +74,12 @@ public class Game_Manager : MonoBehaviour
         Debug.Log("I'm actually unpaused!");
     }
 
+    public static void RestartGame()
+    {
+        StartGame();
+        
+    }
+
     public static void PauseGame()
     {
         if (OnPauseGame != null)
@@ -99,6 +102,7 @@ public class Game_Manager : MonoBehaviour
         _currentState = State.Game_Over;
     }
 
+    
 
 
     /// <summary>
@@ -115,7 +119,7 @@ public class Game_Manager : MonoBehaviour
     /*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
     public static Game_Manager Instance { get { return _instance; } }
     public static State CurrentState { get { return _currentState; } }
-    public static string GetTime { get { return time; } }
+    public static float GetTime { get { return _totalTime; } }
 
    
 }

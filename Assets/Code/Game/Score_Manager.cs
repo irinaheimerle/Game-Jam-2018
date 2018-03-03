@@ -16,10 +16,15 @@ public class Score_Manager : MonoBehaviour
 
 	private static int _currScore;
 	private static float _multiplier;
+    private static int _timeScore;
+    private static int _time;
+    private static int _astScore;
 
 	private static float _currMultiplierCooldown;
+    private const int _CLICKED_POINTS = 500;
 
-	private void Awake()
+
+    private void Awake()
 	{
 		_instance = this;
 	}
@@ -37,6 +42,9 @@ public class Score_Manager : MonoBehaviour
 			_currMultiplierCooldown -= Time.deltaTime;
 		else
 			_multiplier = 1.0f;
+
+        UpdateTimeScore();
+        TotalScore();
 	}
 
 
@@ -77,11 +85,32 @@ public class Score_Manager : MonoBehaviour
 		_currMultiplierCooldown = multiplierCooldown;
 	}
 
-	/*--------------------------------------------------------------------------------ABSTRACTS---------------------*/
-	/*--------------------------------------------------------------------------------EVENTS------------------------*/
-	/*--------------------------------------------------------------------------------OVERRIDES---------------------*/
-	/*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
-	public static float CurrentScore { get { return _currScore; } }
+    public void UpdateTimeScore()
+    {
+        _time = (int) Game_Manager.GetTime;
 
+        if (_time > 0)
+        {
+            _timeScore = _time * 50;
+        }
+
+    }
+
+    public void TotalScore()
+    {
+        _currScore = _timeScore + _astScore;
+        Debug.Log("Time score: " + _timeScore);
+        Debug.Log("Asteroid score: " + _astScore);
+        Debug.Log("Total score: " + _currScore);
+    }
+
+	/*--------------------------------------------------------------------------------ABSTRACTS---------------------*/
+    /*--------------------------------------------------------------------------------EVENTS------------------------*/
+    /*--------------------------------------------------------------------------------OVERRIDES---------------------*/
+    /*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
+    public static float CurrentScore { get { return _currScore; } }
+
+    public static void ClickPoints()
+    { _astScore += _CLICKED_POINTS; }
 
 }
