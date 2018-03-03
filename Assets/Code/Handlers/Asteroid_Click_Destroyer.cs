@@ -6,11 +6,13 @@ public class Asteroid_Click_Destroyer : MonoBehaviour {
 
 	public ParticleSystem destroyPart;
 
-
+	void Start(){
+		destroyPart.enableEmission = false;
+	}
 
 	private void OnMouseDown(){
 
-
+		destroyPart.enableEmission = true;
 		ParticleSystem cloneDestroy = ParticleSystem.Instantiate (destroyPart);
 
 		GameObject.Destroy (destroyPart);
