@@ -1,27 +1,39 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Debug_Manager : MonoBehaviour
+public class Multiplier : MonoBehaviour
 {
-	private static Debug_Manager _instance;
-	private static bool _showDebugTools = true;
+	public delegate void Multiplier_Event(Multiplier multiplier);
+	public Multiplier_Event OnFinish;
 
-	//TODO: Remove after testing.
-	private void OnGUI()
+	public string name = "";
+	public int value;
+
+	private void Start()
 	{
-		GUILayout.BeginArea(new Rect(Screen.width - 130, 0, 130, 40));
-		if (GUILayout.Button("Toggle Debug Tools"))
-			_showDebugTools = !_showDebugTools;
-		GUILayout.EndArea();
-
-		//Debug.Log("TOOLS: " + _showDebugTools);
+		
 	}
 
-
 	/*--------------------------------------------------------------------------------METHODS-----------------------*/
+	public virtual Multiplier CreateMultiplier(Transform multiplierContainer)
+	{
+		return Multiplier.Instantiate(this, multiplierContainer);
+	}
+
+	public virtual void PauseMultiplier() { }
+
+	public virtual void ResumeMultiplier() { }
+
+	public virtual void ResetMultiplier() { }
+
+	/*-------Event Callers-------*/
+	protected void FinishMultiplier()
+	{
+		if (OnFinish != null)
+			OnFinish(this);
+	}
 	/*--------------------------------------------------------------------------------ABSTRACTS---------------------*/
 	/*--------------------------------------------------------------------------------EVENTS------------------------*/
 	/*--------------------------------------------------------------------------------OVERRIDES---------------------*/
 	/*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
-	public static bool ShowDebugTools { get { return _showDebugTools; } }
 }

@@ -21,12 +21,13 @@ public class Asteroid : MonoBehaviour {
         float x = asteroid.transform.position.x;
         float y = asteroid.transform.position.y;
         float z = asteroid.transform.position.z;
-        asteroid.transform.position = new Vector3(x, y-0.2f, z);
+        asteroid.transform.position = new Vector3(x, y-0.5f, z);
 	}
 
     private void OnMouseDown()
     {
+        Debug.Log("I am here");
         //GetComponent<Renderer>().enabled = false;
-        GameObject.DestroyImmediate(gameObject);
+        AsteroidManager.DestroyAsteroid(this);
     }
 }
