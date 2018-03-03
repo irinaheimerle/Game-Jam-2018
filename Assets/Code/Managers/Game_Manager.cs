@@ -98,5 +98,6 @@ public class Game_Manager : MonoBehaviour {
 	/*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
 	public static Game_Manager Instance { get { return _instance; } }
 	public static State CurrentState { get { return _currentState; } }
+	public static float GetTime { get { return _totalTime; } }
 
 }
