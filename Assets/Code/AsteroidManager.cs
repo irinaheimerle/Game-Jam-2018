@@ -49,7 +49,7 @@ public class AsteroidManager : MonoBehaviour {
 			//Debug.Log("DISTANCE: " + distance);
 		}
 
-        Debug.Log(asteroidList.Count);
+        //Debug.Log(asteroidList.Count);
 
         if (asteroidList.Count <= 1 )
         {
