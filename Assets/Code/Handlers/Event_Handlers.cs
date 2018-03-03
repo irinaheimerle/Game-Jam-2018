@@ -27,7 +27,7 @@ public class Event_Handlers : MonoBehaviour {
 
     public void toResume(){
         Debug.Log("I'm unpaused!");
-        Game_Manager.StartGame();
+        Game_Manager.PlayGame();
         Debug.Log("I'm unpaused again!");
     }
 

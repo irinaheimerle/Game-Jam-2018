@@ -8,7 +8,7 @@ using UnityEngine;
 /// </summary>
 public class Game_Manager : MonoBehaviour {
 	public delegate void Game_Event();
-	public static Game_Event OnStartGame, OnPauseGame, OnEndGame;
+	public static Game_Event OnStartGame, OnPlayGame, OnPauseGame, OnEndGame;
 	
 	public enum State
 	{
@@ -50,7 +50,7 @@ public class Game_Manager : MonoBehaviour {
 		if (!Debug_Manager.ShowDebugTools) return;
 
 		if (GUILayout.Button ("Start Game"))
-			StartGame ();
+			PlayGame ();
 		if (GUILayout.Button ("End Game"))
 			EndGame ();
 	}
@@ -60,6 +60,16 @@ public class Game_Manager : MonoBehaviour {
 	{
 		if (OnStartGame != null)
 			OnStartGame ();
+
+		Time.timeScale = 1f;
+
+		_currentState = State.Play;
+	}
+
+	public static void PlayGame()
+	{
+		if (OnPlayGame != null)
+			OnPlayGame();
 
 		Time.timeScale = 1f;
 
@@ -98,5 +108,6 @@ public class Game_Manager : MonoBehaviour {
 	/*--------------------------------------------------------------------------------GETTERS and SETTERS-----------*/
 	public static Game_Manager Instance { get { return _instance; } }
 	public static State CurrentState { get { return _currentState; } }
+	public static float GetTime { get { return _totalTime; } }
 
 }
